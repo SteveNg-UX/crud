@@ -16,4 +16,4 @@ RUN a2enmod ssl \
 && openssl req -new -x509 -key auth-priv-key.pem -out auth-cert.crt -days 90 \
 && cd /etc/apache2/sites-available/ \
 && a2ensite vhost_*.conf \
-&& service apache2 restart
+&& service apache2 reload
