@@ -14,6 +14,6 @@ CREATE TABLE IF NOT EXISTS `employees` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 -- créer un utilisateur pour la base de données
-CREATE USER 'usercrud'@'web01.test.lan' IDENTIFIED BY 'azerty ';
-GRANT ALL PRIVILEGES ON crud.* TO 'usercrud'@'web01.test.lan' WITH GRANT OPTION;
+CREATE USER 'usercrud'@'192.168.10.10' IDENTIFIED BY 'azerty ';
+GRANT ALL PRIVILEGES ON crud.* TO 'usercrud'@'192.168.10.10' WITH GRANT OPTION;
 FLUSH PRIVILEGES;

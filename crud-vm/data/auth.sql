@@ -15,6 +15,6 @@ CREATE TABLE IF NOT EXISTS users (
 INSERT INTO users (username, password) VALUES ('admin', 'azerty');
 
 -- créer un utilisateur pour la base de données
-CREATE USER 'userauth'@'web01.test.lan' IDENTIFIED BY 'azerty';
-GRANT ALL PRIVILEGES ON auth.* TO 'userauth'@'web01.test.lan' WITH GRANT OPTION;
+CREATE USER 'userauth'@'192.168.10.10' IDENTIFIED BY 'azerty';
+GRANT ALL PRIVILEGES ON auth.* TO 'userauth'@'192.168.10.10' WITH GRANT OPTION;
 FLUSH PRIVILEGES;

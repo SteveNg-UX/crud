@@ -9,7 +9,7 @@ if(isset($_SESSION['user_id'])) {
 // Vérifier si le formulaire de connexion est soumis
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Connexion à la base de données (à remplacer avec vos propres informations)
-    $dsn = "mysql:host=db.test.lan;dbname=auth";
+    $dsn = "mysql:host=192.168.20.10;dbname=auth";
     $username = "userauth";
     $password = "azerty";
 
