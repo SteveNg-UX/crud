@@ -8,12 +8,12 @@ COPY ../vhost_auth.conf /etc/apache2/sites-available/
 RUN a2enmod ssl \
 && mkdir /etc/apache2/sites-available/cert \
 && cd /etc/apache2/sites-available/cert
-&& openssl -ecparam -name prime256v1 -genkey -noout -out crud-privkey.pem \
-&& openssl -ec -in crud-priv-key.pem -pubout -out crud-pub-key.pem \
-&& openssl req -new -x509 -key crud-priv-key.pem -out crud-cert.crt -days 90 \
-&& openssl -ecparam -name prime256v1 -genkey -noout -out auth-privkey.pem \
-&& openssl -ec -in auth-priv-key.pem -pubout -out auth-pub-key.pem \
-&& openssl req -new -x509 -key auth-priv-key.pem -out auth-cert.crt -days 90 \
+&& openssl ecparam -name prime256v1 -genkey -noout -out crud-privkey.pem \
+&& openssl ec -in crud-priv-key.pem -pubout -out crud-pub-key.pem \
+&& openssl req -new -x509 -key crud-priv-key.pem -out crud-cert.crt -days 90 -subj "/C=FR/ST=Ile-de-France/L=Paris/O=test/CN=crud.test.lan" \
+&& openssl ecparam -name prime256v1 -genkey -noout -out auth-privkey.pem \
+&& openssl ec -in auth-priv-key.pem -pubout -out auth-pub-key.pem \
+&& openssl req -new -x509 -key auth-priv-key.pem -out auth-cert.crt -days 90 -subj "/C=FR/ST=Ile-de-France/L=Paris/O=test/CN=auth.test.lan"
 && cd /etc/apache2/sites-available/ \
 && a2ensite vhost_*.conf \
 && service apache2 reload
