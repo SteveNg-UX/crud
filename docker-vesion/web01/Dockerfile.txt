@@ -2,7 +2,7 @@ FROM php:apache
 
 COPY ../crud /var/www/html/
 COPY ../auth /var/www/html/
-COPY ../web/vhost_crud.conf /etc/apache2/sites-available/
-COPY ../web/vhost_auth.conf /etc/apache2/sites-available/
+COPY ../vhost_crud.conf /etc/apache2/sites-available/
+COPY ../vhost_auth.conf /etc/apache2/sites-available/
 
 RUN cd /etc/apache2/sites-available/ && a2ensite vhost_*.conf
