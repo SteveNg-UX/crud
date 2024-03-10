@@ -1,18 +1,18 @@
-<VirtualHost *:80>
+<VirtualHost *:443>
 	ServerName	auth.test.lan
 	ServerAdmin	webmaster@localhost
 	DocumentRoot	/var/www/html/auth
 	ErrorLog	${APACHE_LOG_DIR}/error.log
 	CustomLog	${APACHE_LOG_DIR}/access.log combined
-	#SSLEngine on
-	#SSLCertificateFile	/etc/apache/cert/auth-cert.crt
-	#SSLCertificateKeyFile	/etc/apache/cert/auth-priv-key.pem
-	#SSLProtocol	-ALL +TLSv1 +TLSv1.1 +TLSv1.2
-	#SSLCompression off
-	#<FilesMatch "\.(cgi|shtml|phtml|php)$">
-	#	SSLOption	+StdEnvVars
-	#</FilesMatch>
-	#<Directory /usr/lib/cgi-bin>
-	#	SSLOption	+StdEnvVars
-	#</Directory>
+	SSLEngine on
+	SSLCertificateFile	/etc/apache/cert/auth-cert.crt
+	SSLCertificateKeyFile	/etc/apache/cert/auth-priv-key.pem
+	SSLProtocol	-ALL +TLSv1 +TLSv1.1 +TLSv1.2
+	SSLCompression off
+	<FilesMatch "\.(cgi|shtml|phtml|php)$">
+		SSLOption	+StdEnvVars
+	</FilesMatch>
+	<Directory /usr/lib/cgi-bin>
+		SSLOption	+StdEnvVars
+	</Directory>
 </VirtualHost>
