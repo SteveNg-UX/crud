@@ -6,7 +6,7 @@ version: '3.8'
             build: web/.
             ports:
                 - 80:80
-        dbcrud:
+        database:
             container_name: database
             restart: always
             build: data/.
