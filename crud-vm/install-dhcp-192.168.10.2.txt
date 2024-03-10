@@ -1,0 +1,21 @@
+apt-get update -y && apt-get install isc-dhcp-server -y
+
+echo "IPv4=\"$(ip addr | grep inet | grep brd | cut -d' ' -f11)\"" > /etc/default/isc-dhcp-server
+
+echo "
+option domain-name "example.org";
+option domain-name-servers ns1.example.org, ns2.example.org;
+
+default-lease-time 600;
+max-lease-time 7200;
+ddns-update-style none;
+
+subnet 192.168.10.0 netmask 255.255.255.0 {
+	range	192.168.1.50	192.168.1.250;
+	option	domain-name-servers	192.168.10.2;
+	option	domain-name	"test.lan";
+	option	broadcast-address	192.168.1.255;
+	option	routers	192.168.10.1;
+}" > /etc/dhcp/dhcpd.conf
+
+systemctl restart isc-dhcp-server.service

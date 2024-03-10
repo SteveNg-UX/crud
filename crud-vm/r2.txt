@@ -1,0 +1,9 @@
+INTERFACE=$(ip addr | grep inet | grep brd | cut -d' ' -f11)
+
+apt-get update -y && apt-get install iptables -y
+
+echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
+
+iptables -A POSTROUTING -o ${INTERFACE} -j MASQUERADE
+
+systemctl restart networking.service

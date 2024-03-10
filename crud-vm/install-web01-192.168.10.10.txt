@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# installation middleware
+apt-get update -y && apt-get install mariadb-server
+mariadb < crud-vm/data/auth.sql && mariadb < crud-vm/data/crud.sql
+systemctl restart mariadb-server.service

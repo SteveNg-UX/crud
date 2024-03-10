@@ -1,0 +1,5 @@
+#!/bin/bash
+
+apt-get update -y && apt-get install mariadb-server -y
+mariadb < crud-vm/data/auth.sql && mariadb < crud-vm/data/crud.sql
+systemctl restart mariadb-server.service
