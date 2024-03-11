@@ -1,9 +1,9 @@
 FROM php:apache
 
-COPY ../crud /var/www/html/
-COPY ../auth /var/www/html/
-COPY ../vhost_crud.conf /etc/apache2/sites-available/
-COPY ../vhost_auth.conf /etc/apache2/sites-available/
+COPY crud/ /var/www/html/
+COPY auth/ /var/www/html/
+COPY vhost_crud.conf /etc/apache2/sites-available/
+COPY vhost_auth.conf /etc/apache2/sites-available/
 
 RUN a2enmod ssl \
 && mkdir /etc/apache2/sites-available/cert \
